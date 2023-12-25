@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator</title>
+    <style>
+        * {
+            margin: 0; padding: 0; box-sizing: border-box; font-family: monospace;
+        }
+        body {
+            display: flex; height: 100vh; align-items: center; justify-content: center; background-color: #202020;
+        }
+        .container{
+            position: relative; min-width: 300px; min-height: 400px; padding: 40px 30px 30px; border-radius: 20px;
+            box-shadow: 25px 25px 75px rgba(0, 0, 0, 0.25), 10px 10px 70px rgba(0, 0, 0, 0.25),
+                inset -5px -5px 15px rgba(0, 0, 0, 0.25), inset 5px 5px 15px rgba(0, 0, 0, 0.25);
+        }
+        .container span {
+            color: #fff; position: relative; display: grid; width: 80px; height: 80px; margin: 8px; place-items: center; border-radius: 10px;
+            background: linear-gradient(100deg, #2f2f2f, #3f3f3f); user-select: none; cursor: pointer; font-weight: 400; 
+        }
+        .kalkulator{
+            position: relative; display: grid;
+        }
+        .kalkulator span:active{
+            filter: brightness(1.5);
+        }
+        .kalkulator span::before{
+            content: ''; position: absolute; top: 3px; left: 4px; bottom: 14px; right: 12px; border-radius: 10px; border-left: 1px solid #0004;
+            border-bottom: 1px solid #0004; border-top: 1px solid #0009; box-shadow: -5px -5px 15px rgba(0, 0, 0, 0.1), 10px 5px 10px rgba(0, 0, 0, 0.15);
+        }
+        .kalkulator span i{
+            position: relative; font-style: normal; font-size: 1.5em; text-transform: uppercase;
+        }
+        .kalkulator .value{
+            position: relative; grid-column: span 4; height: 100px; width: calc(100% - 20px); left: 10px; border: none; outline: none; padding: 10px; font-size: 2em;
+            text-align: center; background-color: #a7af7c; margin-bottom: 10px; border-radius: 10px; box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.75);
+        }
+        .kalkulator .clear{
+            grid-column: span 2; width: 180px; background: #f00;
+        }
+        .kalkulator .clear::before{
+            background-image: linear-gradient(90deg, #d20000, #ffffff5c); border-left: 1px solid #fff4; border-top: 1px solid #fff4; border-bottom: 1px solid #fff4;
+        }
+        .kalkulator .plus{
+            grid-row: span 2; height: 180px; 
+        }
+        .kalkulator .equal{
+            background: #2196f3;
+        }
+        .kalkulator .equal::before{
+            background-image: linear-gradient(90deg, #2196f3, #ffffff5c); border-left: 1px solid #fff4; border-top: 1px solid #fff4; border-bottom: 1px solid #fff4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="#" name="calc" class="kalkulator">
+            <input type="text" class="value" name="txt" readonly>
+            <span class="num clear" onclick="calc.txt.value =''"><i>C</i></span>
+            <span class="num" onclick="calc.txt.value+='/'"><i>/</i></span>
+            <span class="num" onclick="calc.txt.value+='*'"><i>x</i></span>
+            <span class="num" onclick="calc.txt.value+='7'"><i>7</i></span>
+            <span class="num" onclick="calc.txt.value+='8'"><i>8</i></span>
+            <span class="num" onclick="calc.txt.value+='9'"><i>9</i></span>
+            <span class="num" onclick="calc.txt.value+='-'"><i>-</i></span>
+            <span class="num" onclick="calc.txt.value+='4'"><i>4</i></span>
+            <span class="num" onclick="calc.txt.value+='5'"><i>5</i></span>
+            <span class="num" onclick="calc.txt.value+='6'"><i>6</i></span>
+            <span class="num plus" onclick="calc.txt.value+='+'"><i>+</i></span>
+            <span class="num" onclick="calc.txt.value+='1'"><i>1</i></span>
+            <span class="num" onclick="calc.txt.value+='2'"><i>2</i></span>
+            <span class="num" onclick="calc.txt.value+='3'"><i>3</i></span>
+            <span class="num" onclick="calc.txt.value+='0'"><i>0</i></span>
+            <span class="num" onclick="calc.txt.value+='00'"><i>00</i></span>
+            <span class="num" onclick="calc.txt.value+='.'"><i>.</i></span>
+
+            <span class="num equal" onclick="document.calc.txt.value=eval(calc.txt.value)"><i> = </i></span>
+        </form>
+    </div>
+</body>
+</html>

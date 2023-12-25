@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .error {
+      color: red;
+    }
+
+    #outputContainer {
+      display: flex;
+      flex-direction: column;
+    }
+  </style>
+  <title>Form Validasi</title>
+</head>
+<body>
+
+  <h2>Form Mahasiswa</h2>
+
+  <form id="mahasiswaForm" onsubmit="validateForm(); return false;">
+    <label for="nama">Nama:</label>
+    <input type="text" id="nama" name="nama">
+    <span id="errorNama" class="error"></span>
+
+    <br>
+
+    <label for="nim">NIM:</label>
+    <input type="text" id="nim" name="nim">
+    <span id="errorNim" class="error"></span>
+
+    <br>
+
+    <label for="jurusan">Jurusan:</label>
+    <input type="text" id="jurusan" name="jurusan">
+    <span id="errorJurusan" class="error"></span>
+
+    <br>
+
+    <input type="submit" value="Submit">
+  </form>
+
+  <div id="outputContainer"></div>
+
+  <script>
+    function validateForm() {
+      // Ambil nilai input
+      var nama = document.getElementById("nama").value;
+      var nim = document.getElementById("nim").value;
+      var jurusan = document.getElementById("jurusan").value;
+
+      // Inisialisasi pesan error
+      var errorNama = "";
+      var errorNim = "";
+      var errorJurusan = "";
+
+      // Validasi input
+      if (nama === "") {
+        errorNama = "Nama harus diisi";
+      }
+
+      if (nim === "") {
+        errorNim = "NIM harus diisi";
+      }
+
+      if (jurusan === "") {
+        errorJurusan = "Jurusan harus diisi";
+      }
+
+      // Tampilkan pesan error jika diperlukan
+      document.getElementById("errorNama").innerHTML = errorNama;
+      document.getElementById("errorNim").innerHTML = errorNim;
+      document.getElementById("errorJurusan").innerHTML = errorJurusan;
+
+      // Jika tidak ada error, tampilkan output
+      if (errorNama === "" && errorNim === "" && errorJurusan === "") {
+        var outputContainer = document.getElementById("outputContainer");
+        var outputItem = document.createElement("div");
+        outputItem.innerHTML = "Nama: " + nama + "<br>NIM: " + nim + "<br>Jurusan: " + jurusan;
+        outputContainer.appendChild(outputItem);
+
+        // Bersihkan input setelah submit
+        document.getElementById("nama").value = "";
+        document.getElementById("nim").value = "";
+        document.getElementById("jurusan").value = "";
+      }
+    }
+  </script>
+
+</body>
+</html>
